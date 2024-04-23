@@ -1,5 +1,8 @@
+import { Container } from "react-bootstrap";
+import styles from "./styles.module.css"
+const {} =styles
 const MainLayout = () => {
-	return <div>MainLayout</div>;
+	return <Container>MainLayout</Container>;
 };
 
 export default MainLayout;
