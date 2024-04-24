@@ -1,0 +1,42 @@
+.headerContainer {
+	padding: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.headerLogo {
+	color: inherit;
+	text-decoration: inherit;
+	font-size: 2.3rem;
+	margin: 0;
+}
+
+.headerLogo h1 {
+	margin: 0;
+	display: flex;
+}
+
+.headerLogo h1 span {
+	display: block;
+	margin-right: 5px;
+}
+
+.basketContainer {
+  position: relative;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.basketQuantity {
+  background-color: #0dcaf0;
+  height: 22px;
+  width: 22px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid;
+  position: absolute;
+  top: -16px;
+  right: -5px;
+  font-size: 12px;
+}
