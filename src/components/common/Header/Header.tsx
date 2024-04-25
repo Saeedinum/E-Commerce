@@ -24,10 +24,10 @@ const Header = () => {
 								Home
 							</Nav.Link>
 							<Nav.Link as={NavLink} to='/categories'>
-							Categories
+								Categories
 							</Nav.Link>
 							<Nav.Link as={NavLink} to='/about-us'>
-							About Us
+								About Us
 							</Nav.Link>
 						</Nav>
 						<Nav>
