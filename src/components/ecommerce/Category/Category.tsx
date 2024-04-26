@@ -1,18 +1,23 @@
 import styles from "./styles.module.css";
-const { category, categoryImg, categoryTitle } = styles;
+const {category, categoryImg, categoryTitle} = styles;
+import {Link} from "react-router-dom";
 
-const Category = () => {
-  return (
-    <div className={category}>
-      <div className={categoryImg}>
-        <img
-          src="https://th.bing.com/th/id/OIP.WpZIqtcfKpTMyzaa8eZaowHaFO?rs=1&pid=ImgDetMain"
-          alt=""
-        />
-      </div>
-      <h4 className={categoryTitle}>Title</h4>
-    </div>
-  );
+interface Iprops {
+	title: string;
+	img: string;
+	prefix: string;
+}
+const Category = ({title, img, prefix}: Iprops) => {
+	return (
+		<div className={category}>
+			<Link to={`/categories/products/${prefix}`}>
+				<div className={categoryImg}>
+					<img src={img} alt={title} />
+				</div>
+				<h4 className={categoryTitle}>{title}</h4>
+			</Link>
+		</div>
+	);
 };
 
 export default Category;

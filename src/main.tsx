@@ -1,5 +1,7 @@
 import ReactDOM from "react-dom/client";
+
 import MainLayout from "@layouts/MainLayout/MainLayout";
+
 import Home from "@pages/Home";
 import Categories from "@pages/Categories";
 import Products from "@pages/Products";
@@ -9,6 +11,10 @@ import Register from "@pages/Register";
 import Error from "@pages/Error";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import {Provider} from "react-redux";
+import store from "@store/store";
+
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -22,11 +28,11 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: "/categories",
+				path: "categories",
 				element: <Categories />,
 			},
 			{
-				path: "/products/:prefix",
+				path: "categories/products/:prefix",
 				element: <Products />,
 				loader: ({params}) => {
 					if (typeof params.prefix !== "string" || !/^[a-z]+$/i.test(params.prefix)) {
@@ -39,18 +45,23 @@ const router = createBrowserRouter([
 				},
 			},
 			{
-				path: "/about-us",
+				path: "about-us",
 				element: <AboutUs />,
 			},
 			{
-				path: "/login",
+				path: "login",
 				element: <Login />,
 			},
 			{
-				path: "/register",
+				path: "register",
 				element: <Register />,
 			},
 		],
 	},
 ]);
-ReactDOM.createRoot(document.getElementById("root")!).render(<RouterProvider router={router}></RouterProvider>);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+	<Provider store={store}>
+		<RouterProvider router={router}></RouterProvider>
+	</Provider>,
+);
