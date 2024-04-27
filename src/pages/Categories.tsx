@@ -1,9 +1,12 @@
-import {Container, Row, Col} from "react-bootstrap";
-import Category from "@components/ecommerce/Category/Category";
 import {useEffect} from "react";
+
+import Category from "@components/ecommerce/Category/Category";
+import Loading from "@components/feedback/Loading/Loading";
 
 import {useAppDispatch, useAppSelector} from "@store/hooks";
 import {actGetCategories} from "@store/Categories/categoriesSlice";
+
+import {Container, Row, Col} from "react-bootstrap";
 
 const Categories = () => {
 	const dispatch = useAppDispatch();
@@ -25,9 +28,11 @@ const Categories = () => {
 			: "there are no categories";
 
 	return (
-		<Container>
-			<Row>{categoriesList}</Row>
-		</Container>
+		<Loading loading={loading} error={error}>
+			<Container>
+				<Row>{categoriesList}</Row>
+			</Container>
+		</Loading>
 	);
 };
 
