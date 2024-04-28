@@ -13,7 +13,8 @@ import Error from "@pages/Error";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {Provider} from "react-redux";
-import store from "@store/store";
+import {store , persistor} from "@store/store";
+import {PersistGate} from "redux-persist/integration/react";
 
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
@@ -62,6 +63,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<Provider store={store}>
+		<PersistGate loading={null} persistor={persistor}>
 		<RouterProvider router={router}></RouterProvider>
+		</PersistGate>
 	</Provider>,
 );
