@@ -1,4 +1,4 @@
-import Product from "@components/ecommerce/Category/Category";
+import Product from "@components/ecommerce/Product/Product";
 import GridList from "@components/common/GridList/GridList";
 import Loading from "@components/feedback/Loading/Loading";
 

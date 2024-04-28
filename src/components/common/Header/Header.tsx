@@ -1,9 +1,16 @@
-import styles from "./styles.module.css";
-const {headerContainer, headerLogo, basketContainer, basketQuantity} = styles;
-import Logo from "../../../assets/cart.svg?react";
-import {Badge, Navbar, Container, Nav} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
+
+import {useAppSelector} from "@store/hooks";
+
+const {headerContainer, headerLogo, basketContainer, basketQuantity} = styles;
+import {Badge, Navbar, Container, Nav} from "react-bootstrap";
+import Logo from "../../../assets/cart.svg?react";
+import styles from "./styles.module.css";
+
 const Header = () => {
+	const cartSum = Object.values(useAppSelector((state) => state.cart.items)).reduce((acc, item) => {
+		return acc + item;
+	}, 0);
 	return (
 		<header>
 			<div className={headerContainer}>
@@ -12,7 +19,7 @@ const Header = () => {
 				</h1>
 				<div className={basketContainer}>
 					<Logo></Logo>
-					<div className={basketQuantity}>0</div>
+					<div className={basketQuantity}>{cartSum}</div>
 				</div>
 			</div>
 			<Navbar expand='lg' className='bg-body-tertiary' bg='dark' data-bs-theme='dark'>
