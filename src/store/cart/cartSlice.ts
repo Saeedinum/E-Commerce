@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-
+import {actGetProducts} from "./act/actGetProducts";
 type TProduct = {
 	id: number;
 	title: string;
@@ -42,3 +42,4 @@ const CartSlice = createSlice({
 
 export const {addToCart} = CartSlice.actions;
 export default CartSlice.reducer;
+export {actGetProducts};

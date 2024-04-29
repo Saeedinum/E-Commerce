@@ -9,11 +9,12 @@ import AboutUs from "@pages/AboutUs";
 import Login from "@pages/Login";
 import Register from "@pages/Register";
 import Error from "@pages/Error";
+import Cart from "@pages/Cart";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {Provider} from "react-redux";
-import {store , persistor} from "@store/store";
+import {store, persistor} from "@store/store";
 import {PersistGate} from "redux-persist/integration/react";
 
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: <Home />,
+			},
+			{
+				path: "cart",
+				element: <Cart />,
 			},
 			{
 				path: "categories",
@@ -64,7 +69,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<Provider store={store}>
 		<PersistGate loading={null} persistor={persistor}>
-		<RouterProvider router={router}></RouterProvider>
+			<RouterProvider router={router}></RouterProvider>
 		</PersistGate>
 	</Provider>,
 );

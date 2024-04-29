@@ -1,4 +1,4 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 import {useAppSelector} from "@store/hooks";
 
@@ -8,7 +8,8 @@ import Logo from "../../../assets/cart.svg?react";
 import styles from "./styles.module.css";
 
 const Header = () => {
-	const cartSum = Object.values(useAppSelector((state) => state.cart.items)).reduce((acc, item) => {
+	const navigate = useNavigate();
+	const cartSum = Object.values(useAppSelector((state) => state.cart.items)).reduce((acc : number, item : number) => {
 		return acc + item;
 	}, 0);
 	return (
@@ -17,7 +18,7 @@ const Header = () => {
 				<h1 className={headerLogo}>
 					<Badge bg='info'>E-Commerce</Badge>
 				</h1>
-				<div className={basketContainer}>
+				<div className={basketContainer} onClick={() => navigate("/cart")} >
 					<Logo></Logo>
 					<div className={basketQuantity}>{cartSum}</div>
 				</div>

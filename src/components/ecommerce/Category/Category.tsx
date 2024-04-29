@@ -3,9 +3,10 @@ const {category, categoryImg, categoryTitle} = styles;
 import {Link} from "react-router-dom";
 
 interface Iprops {
-	title: string;
-	img: string;
-	prefix: string;
+	id?: number;
+	title?: string;
+	img?: string;
+	prefix?: string;
 }
 const Category = ({title, img, prefix}: Iprops) => {
 	return (
