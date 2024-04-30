@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {actGetProducts} from "./act/actGetProducts";
+
 type TProduct = {
 	id: number;
 	title: string;
@@ -12,11 +13,15 @@ type TProduct = {
 interface IcartState {
 	items: {[key: number]: number};
 	productFullInfo: TProduct[];
+	loading: "idle" | "pending" | "succeeded" | "failed";
+	error: string | null;
 }
 
 const initialState: IcartState = {
 	items: {},
 	productFullInfo: [],
+	loading: "idle",
+	error: null,
 };
 
 const CartSlice = createSlice({
@@ -37,6 +42,19 @@ const CartSlice = createSlice({
 		cleanCart: (state) => {
 			state.items = {};
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(actGetProducts.pending, (state) => {
+			state.loading = "pending";
+		});
+		builder.addCase(actGetProducts.fulfilled, (state, action) => {
+			state.loading = "succeeded";
+			state.productFullInfo = action.payload;
+		});
+		builder.addCase(actGetProducts.rejected, (state, action) => {
+			state.loading = "failed";
+			state.error = action.error.message ?? null;
+		});
 	},
 });
 

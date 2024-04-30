@@ -6,11 +6,11 @@ import { actGetProducts } from "@store/Products/productsSlice";
 import CartItem from "@components/ecommerce/CartItem/CartItem";
 
 const Cart = () => {
-  const dispatch = useAppDispatch()
-  const {items } = useAppSelector((state) => state.cart)
-  useEffect(() => {
-    dispatch(actGetProducts())
-  }, [dispatch])
+const dispatch = useAppDispatch()
+const {items } = useAppSelector((state) => state.cart)
+useEffect(() => {
+	dispatch(actGetProducts(/* pass the argument here */))
+}, [dispatch])
   return (
 		<>
 			<CartItem />
